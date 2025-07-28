@@ -2,7 +2,7 @@ import React from "react";
 import Footer from "../components/footer";
 import Navbar from "../components/navbar";
 import Hero from "../components/hero";
-import Fundo09 from "../assets/imagens/Fundo09.png"
+import Fundo09 from "../assets/imagens/fundo09.png"
 import Carousel from "../components/carousel";
 
 const ServicePage = () => {
