@@ -4,14 +4,15 @@ import { FaCreditCard, FaMoneyCheckAlt, FaBarcode } from "react-icons/fa";
 import { SiPix } from "react-icons/si";
 import bairroImg from "../assets/imagens/bairro.png";
 
-
-const CheckoutPage = () => {
-  const produto = {
-    nome: "Bola de Basquete no precinho",
-    imagem: basquete,
-    preco: 200,
-    quantidade: 1,
-  };
+const buscarProduto = async (id) => {
+  try {
+    const response = await fetch(`http://localhost:3000/api/produto/${id}`);
+    const dados = await response.json();
+    setProduto(dados);
+  } catch (erro) {
+    console.error('Erro ao buscar produto:', erro);
+  }
+};
 
   const [mostrarMapa, setMostrarMapa] = useState(false);
  const [cupom, setCupom] = useState("");
@@ -64,46 +65,7 @@ const CheckoutPage = () => {
   const pixKey = "123e4567-e89b-12d3-a456-426614174000";
   const boletoCodigo = "12345678901234567890"; 
 
-  return (
-    <div className="w-screen h-screen bg-white flex items-center justify-center p-4">
-      <div className="flex flex-col md:flex-row gap-8 w-full h-full max-w-full">
-       
-        <div className="flex-1 bg-gray-100 p-6 rounded-lg flex flex-col items-center">
-          <h1 className="text-3xl font-bold mb-4 bg-gradient-to-r from-yellow-600 to-orange-500 bg-clip-text text-transparent">
-            CENTAURO
-          </h1>
-          <div className="border border-gray-300 p-4 rounded-lg w-full max-w-sm">
-            <h2 className="text-2xl font-semibold mb-4">{produto.nome}</h2>
-            <img
-              src={produto.imagem}
-              alt={produto.nome}
-              className="w-72 rounded-lg mb-4 mx-auto"
-            />
-            <div className="text-center">
-              <p className={`mb-2 ${desconto > 0 ? "text-gray-500" : ""}`}>
-                <strong>Preço original:</strong> R$ {subtotal.toFixed(2)}
-              </p>
-              <p className="mt-1 text-gray-700">
-                Subtotal: R$ {subtotal.toFixed(2)}
-              </p>
-              {desconto > 0 && (
-                <p className="mb-2 text-red-400 line-through">
-                  Desconto: - R$ {(subtotal * desconto).toFixed(2)}
-                </p>
-              )}
-              <hr className="my-4 border-t" />
-              <h3 className="text-xl font-bold text-green-700">
-                Total: R$ {total.toFixed(2)}
-              </h3>
-              {cep.length > 0 && (
-                <p className="mt-4 text-gray-600">
-                  📦 Tempo estimado de entrega:{" "}
-                  <span className="font-medium">3–5 dias úteis</span>
-                </p>
-              )}
-            </div>
-          </div>
-        </div>
+  
 
      
         <div className="flex-1 bg-gray-100 p-6 rounded-lg flex flex-col overflow-y-auto">
