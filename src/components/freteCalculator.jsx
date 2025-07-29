@@ -4,6 +4,7 @@ import { FaCreditCard, FaMoneyCheckAlt, FaBarcode } from "react-icons/fa";
 import { SiPix } from "react-icons/si";
 import bairroImg from "../assets/imagens/bairro.png";
 
+
 const CheckoutPage = () => {
   const produto = {
     nome: "Bola de Basquete no precinho",
