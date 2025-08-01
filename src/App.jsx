@@ -6,7 +6,7 @@ import ContactPage from "./pages/ContactPage"
 import AboutPage from "./pages/AboutPage"
 import RegisterPage from "./pages/registerPage"
 import LoginPage from "./pages/loginPage"
-import LocationPage from "./pages/locationPage"
+
 
 function app () {
 
@@ -21,7 +21,7 @@ function app () {
         <Route path="/about" element={<AboutPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
-        <Route path="/location" element={<LocationPage />} />
+        
 
        </Routes>
       </Router> 
